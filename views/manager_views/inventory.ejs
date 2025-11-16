@@ -19,6 +19,56 @@
                     <th>Unit</th>
                 </tr>
             </thead>
-        </table>
-    </body>
+
+            <tbody>
+                <% inventory.forEach(item => { %> 
+                    <tr>
+                        <form action="/manager/inventory/update" method="POST">
+                            <td>
+                                <%= item.item_id %> 
+                            </td>
+                            <td> 
+                                <%= tiem.item_name %>
+                            </td>
+                            <td> 
+                                <input type="number" name="quantity" value="<%= item.quantity %>" min="0">
+                            </td>
+                            <td>
+                                <%= item.unit %>
+                            </td>
+                            <td>
+                                <input type="hidden" name="Item ID" value="<%= item.item_id %>">
+                                <button type="submit"> Save </button>
+                            </td>
+                        </form>
+
+                        <td>
+                            <form action="/manager/inventory/delete" method="POST">
+                                <input type="hidden" name="Item ID" value="<%= item.item_id %>">
+                                <button type="submit" style="color:red"> Delete </button>
+                            </form>
+                        </td>
+
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table> 
+
+        <form action="manager/inventory/add" method="POST">
+            <label>Item Name:</label>
+            <input type="text" name="item_name" required>
+
+            <label>Quantity:</label>
+            <input type="text" name="quantity" min="0" required>
+
+            <label>Unit:</label>
+            <input type="text" name="unit" required>
+
+            <button type="submit">Add Item</button>
+        </form>
+
+        <div class="footer">
+            Created by Fall 2025 Team 42.
+        </div>
+    </body> 
 </html>

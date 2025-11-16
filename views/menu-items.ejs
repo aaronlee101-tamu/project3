@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Items</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/menu-items.css">
+    <script>
+        window.mealType = "<%= mealType %>";
+        window.selectionLimits = {
+            "Bowl" : [1,1],
+            "Plate" : [1,2],
+            "Bigger Plate" : [1, 3],
+            "Kids" : [1,1],
+            "Family Meal" : [2,5]
+        };
+    </script>
+    <script src="functions/kiosk/menu-items.js" defer></script>
+</head>
+<body>
+
+    <div class="header">
+        Menu - <%=mealType %>
+    </div>
+    <div class="container">
+        <h1>Entree Menu</h1>
+        <div class="menu-grid">
+        <% if (entreeNames && entreeNames.length > 0) { %>
+            <% entreeNames.forEach(function(name) { %>
+                <% if ((name.category === "Entree" || name.category === "Premium Entree") && name.menuitem_name !== "EMPTY") { %>
+                    <button 
+                    class="menu-item" 
+                    data-id="<%= name.menuitem_id %>"
+                    data-category="<%= name.category %>"
+                    onclick="selectItem(this)">
+                        <%= name.menuitem_name %>
+                    </button>
+                <% } %>
+            <% }); %>
+        <% } %>
+
+        </div>
+        <h1>Sides</h1>
+        <div class="menu-grid">
+        <% if (entreeNames && entreeNames.length > 0) { %>
+            <% entreeNames.forEach(function(name) { %>
+                <% if (name.category === "Side") { %>
+                    <button 
+                    class="menu-item" 
+                    data-id="<%= name.menuitem_id %>"
+                    data-category="<%= name.category %>"
+                    onclick="selectItem(this)">
+                        <%= name.menuitem_name %>
+                    </button>
+                <% } %>
+            <% }); %>
+        <% } %>
+        </div>
+
+    </div>
+
+    <button class="proceed-button" onclick="proceed()"><Strong>Proceed</Strong></button>
+
+    <div class="footer">
+        Created Fall 2025 Team 42.
+    </div>
+
+   
+</body>
+</html>

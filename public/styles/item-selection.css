@@ -1,0 +1,21 @@
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 35px;
+    margin-top: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.item-grid button {
+    width: 150px;
+    height: 100px;
+    font-size: 16px;
+    background-color: #d32f2f;
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

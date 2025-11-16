@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10">
+    <link rel="stylesheet" href="/styles/cashier.css">
+    <script src="cashier.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+        const table = document.querySelector('table');
+        table.addEventListener('click', (e) => {
+            if (e.target.nodeName === 'BUTTON' && e.target.name === 'complete') {
+                fetch('/cashier/mark-complete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ orderId: e.target.closest('tr').querySelector('td').innerText })
+                });
+                e.target.closest('tr').remove();
+            }
+        });
+        });
+    </script>
+    <title>Cashier</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Items</th>
+            <th>Size</th>
+            <th></th>
+        </tr>
+        <% orders.forEach(order => { %>
+            <tr>
+                <td><%= order.order_id %></td>
+                <td><%= order.menuitem %></td>
+                <td><%= order.size %></td>
+                <td><button id="<%= orders.order_id%>" name="complete">Completed</button></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>

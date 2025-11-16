@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Selection</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/item-selection.css">
+    <script src="functions/kiosk/item-selection.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        Order <%=orderId%>
+    </div>
+
+    <div class="container">
+        <div class="item-grid">
+            <button onclick="menuItem('Bowl')"><strong>Bowl</strong></button>
+            <button onclick="menuItem('Plate')"><strong>Plate</strong></button>
+            <button onclick="menuItem('Bigger Plate')"><strong>Bigger Plate</strong></button>
+            <button onclick="menuItem('Family')"><strong>Family Meal</strong></button>
+            <button onclick="menuItem('Kids')"><strong>Cub Meal</strong></button>
+            <button onclick="menuItem('Al a Carte')"><strong>Al a Carte</strong></button>
+            <button onclick="menuItem('App')"><strong>Appetizers</strong></button>
+            <button onclick="menuItem('Drink')"><strong>Drinks</strong></button>
+        </div>
+    </div>
+
+    <div class="footer">
+        Created by Fall 2025 Team 42.
+    </div>
+        

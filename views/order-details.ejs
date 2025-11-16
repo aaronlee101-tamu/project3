@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - Panda Express</title>
+    
+    <link rel="stylesheet" href="styles/style.css">    
+    <link rel="stylesheet" href="styles/order-details.css">
+
+    <script src="functions/kiosk/order-details.js"></script>
+</head>
+<body>
+    <div class="header">
+        Panda Express
+    </div>
+
+    <div class="container">
+        <h1>Your Order</h1>
+        <h2>Order Number: <%= entry.orderId %></h2>
+        <h2>Order Details: </h2>
+        <div class="order-details">
+            <p>Size: <%= entry.size %></p>
+            <ul>
+                <% entry.menuItems.forEach(function(item) { %>
+                    <li><%= item.name %> (<%= item.category %>)</li>
+                <% }); %>
+            </ul>
+            <p>Total Price: $<%= entry.price.toFixed(2) %></p>
+        </div>
+    </div>
+
+    <button class ="complete-order-button" onclick="confirmOrder()">Complete Order</button>
+    
+    <div class="footer">
+        Created by Fall 2025 Team 42.
+    </div>
+
+</body>
+</html>

@@ -11,11 +11,11 @@ app.set('view engine', 'ejs');
 const customer = require('./routes/customer'),
       cashier = require('./routes/cashier');
 
+const manager = require('./routes/manager');
+
 app.use('/', customer);
 app.use('/cashier', cashier); 
-
-const manager = require('./routes/manager')
-app.use('/manager', manager)
+app.use('/manager', manager);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

@@ -12,7 +12,10 @@ const customer = require('./routes/customer'),
       cashier = require('./routes/cashier');
 
 app.use('/', customer);
-app.use('/cashier', cashier);
+app.use('/cashier', cashier); 
+
+const manager = require('./routes/manager')
+app.use('/manager', manager)
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
